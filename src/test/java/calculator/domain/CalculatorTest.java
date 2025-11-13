@@ -70,4 +70,17 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀_구분자를_사용() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = "//;\n1;2;3";
+
+        //when
+        int result = calculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(6);
+    }
 }
