@@ -23,7 +23,12 @@ public class Calculator {
 
         int sum = 0;
         for (String number : numbers) {
-            sum += Integer.parseInt(number);
+            int num = Integer.parseInt(number);
+
+            if (num < 0) {
+                throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            }
+            sum += num;
         }
         return sum;
     }

@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -82,5 +83,25 @@ public class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void 음수를_입력하면_예외가_발생() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = "-1,2,3";
+
+        //when & then
+        assertThatThrownBy(() -> calculator.calculate(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 중간에_음수를_입력하면_예외가_발생() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = "1,-2,3";
+
+        //when & then
+        assertThatThrownBy(() -> calculator.calculate(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }
