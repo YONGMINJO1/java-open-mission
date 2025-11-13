@@ -57,4 +57,17 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void 쉼표와_콜론을_함께_사용() {
+        //give
+        Calculator calculator = new Calculator();
+        String input = "1,2:3";
+
+        //when
+        int result = calculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(6);
+    }
 }
