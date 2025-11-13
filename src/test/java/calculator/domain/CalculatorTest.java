@@ -44,4 +44,17 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    void 쉼표로_구분된_여러_숫자를_더하기() {
+        //give
+        Calculator calculator = new Calculator();
+        String input = "1,2,3";
+
+        //when
+        int result = calculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(6);
+    }
 }
