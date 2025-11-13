@@ -31,4 +31,17 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    void 쉼표로_구분된_두_숫자를_더하기() {
+        //give
+        Calculator calculator = new Calculator();
+        String input = "1,2";
+
+        //when
+        int result = calculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(3);
+    }
 }
