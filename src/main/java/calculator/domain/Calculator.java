@@ -23,7 +23,9 @@ public class Calculator {
 
     private void validateNotNull(String input) {
         if (input == null) {
-            throw new IllegalArgumentException("입력값이 null입니다.");
+            throw new IllegalArgumentException(
+                    ErrorMessage.NULL_INPUT.getMessage()
+            );
         }
     }
 
@@ -38,7 +40,9 @@ public class Calculator {
         int delimiterIndex = input.indexOf(CUSTOM_DELIMITER_SEPARATOR);
 
         if (delimiterIndex == -1) {
-            throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
+            throw new IllegalArgumentException(
+                    ErrorMessage.INVALID_CUSTOM_DELIMITER_FORMAT.getMessage()
+            );
         }
 
         String delimiter = input.substring(CUSTOM_DELIMITER_PREFIX_LENGTH, delimiterIndex);
@@ -67,13 +71,16 @@ public class Calculator {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 값이 포함 되어 있습니다: " + number);
+            throw new IllegalArgumentException(
+                    ErrorMessage.INVALID_NUMBER.formatMessage(number));
         }
     }
 
     private void validatePositive(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("음수는 입력할 수 없습니다: " + number);
+            throw new IllegalArgumentException(
+                    ErrorMessage.NEGATIVE_NUMBER.formatMessage(number)
+            );
         }
     }
 
