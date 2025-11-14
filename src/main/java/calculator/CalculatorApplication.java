@@ -4,7 +4,11 @@ import calculator.controller.CalculatorController;
 
 public class CalculatorApplication {
     public static void main(String[] args) {
-        CalculatorController controller = new CalculatorController();
-        controller.run();
+        try {
+            CalculatorController controller = new CalculatorController();
+            controller.run();
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
