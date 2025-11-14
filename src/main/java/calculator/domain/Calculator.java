@@ -16,9 +16,13 @@ public class Calculator {
         String numbersTest;
 
         if (input.startsWith("//")) {
-            int delimiterIndex = input.indexOf("\n");
+            int delimiterIndex = input.indexOf("\\n");
+
+            if (delimiterIndex == -1) {
+                throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
+            }
             delimiter = input.substring(2, delimiterIndex);
-            numbersTest = input.substring(delimiterIndex + 1);
+            numbersTest = input.substring(delimiterIndex + 2);
         } else {
             delimiter = "[,:]";
             numbersTest = input;
