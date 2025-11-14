@@ -20,8 +20,8 @@ public class Calculator {
             return 0;
         }
 
-        String delimiter;
-        String numbersTest;
+        String delimiter = DEFAULT_DELIMITER;
+        String numbersTest = input;
 
         if (input.startsWith(CUSTOM_DELIMITER_PREFIX)) {
             int delimiterIndex = input.indexOf(CUSTOM_DELIMITER_SEPARATOR);
@@ -31,9 +31,6 @@ public class Calculator {
             }
             delimiter = input.substring(CUSTOM_DELIMITER_PREFIX_LENGTH, delimiterIndex);
             numbersTest = input.substring(delimiterIndex + CUSTOM_DELIMITER_SEPARATOR_LENGTH);
-        } else {
-            delimiter = DEFAULT_DELIMITER;
-            numbersTest = input;
         }
 
         String[] numbers = numbersTest.split(delimiter);
