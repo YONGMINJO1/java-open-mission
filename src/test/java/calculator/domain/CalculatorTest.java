@@ -138,4 +138,15 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.calculate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void null을_입력하면_예외_발생() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = null;
+
+        //when & then
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
