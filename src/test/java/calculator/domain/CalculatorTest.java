@@ -76,7 +76,7 @@ public class CalculatorTest {
     void 커스텀_구분자를_사용() {
         //given
         Calculator calculator = new Calculator();
-        String input = "//;\n1;2;3";
+        String input = "//;\\n1;2;3";
 
         //when
         int result = calculator.calculate(input);
