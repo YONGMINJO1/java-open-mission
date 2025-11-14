@@ -102,6 +102,40 @@ public class CalculatorTest {
         String input = "1,-2,3";
 
         //when & then
-        assertThatThrownBy(() -> calculator.calculate(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자가_아닌_값을_입력하면_예외가_빌생() {
+        // given
+        Calculator calculator = new Calculator();
+        String input = "1,a,3";
+
+        // when & then
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 공백을_입력하면_예외발생() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = "1, ,3";
+
+        //when & then
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 빈_값이_포함되면_예외가_발생() {
+        //given
+        Calculator calculator = new Calculator();
+        String input = "1,,3";
+
+        //when & then
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
