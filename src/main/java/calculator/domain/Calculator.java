@@ -33,11 +33,11 @@ public class Calculator {
             try {
                 num = Integer.parseInt(number);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자가 아닌 값이 포함 되어 있습니다." + number);
+                throw new IllegalArgumentException("숫자가 아닌 값이 포함 되어 있습니다: " + number);
             }
 
             if (num < 0) {
-                throw new IllegalArgumentException("음수는 입력할 수 없습니다." + num);
+                throw new IllegalArgumentException("음수는 입력할 수 없습니다: " + num);
             }
             sum += num;
         }
