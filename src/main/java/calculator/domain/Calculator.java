@@ -2,6 +2,14 @@ package calculator.domain;
 
 public class Calculator {
 
+
+    // 상수
+    private static final String CUSTOM_DELIMITER_PREFIX = "//";
+    private static final String CUSTOM_DELIMITER_SEPARATOR = "\\n";
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final int CUSTOM_DELIMITER_PREFIX_LENGTH = 2;
+    private static final int CUSTOM_DELIMITER_SEPARATOR_LENGTH = 2;
+
     public int calculate(String input) {
 
         if (input == null) {
@@ -15,16 +23,16 @@ public class Calculator {
         String delimiter;
         String numbersTest;
 
-        if (input.startsWith("//")) {
-            int delimiterIndex = input.indexOf("\\n");
+        if (input.startsWith(CUSTOM_DELIMITER_PREFIX)) {
+            int delimiterIndex = input.indexOf(CUSTOM_DELIMITER_SEPARATOR);
 
             if (delimiterIndex == -1) {
                 throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
             }
-            delimiter = input.substring(2, delimiterIndex);
-            numbersTest = input.substring(delimiterIndex + 2);
+            delimiter = input.substring(CUSTOM_DELIMITER_PREFIX_LENGTH, delimiterIndex);
+            numbersTest = input.substring(delimiterIndex + CUSTOM_DELIMITER_SEPARATOR_LENGTH);
         } else {
-            delimiter = "[,:]";
+            delimiter = DEFAULT_DELIMITER;
             numbersTest = input;
         }
 
