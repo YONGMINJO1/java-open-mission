@@ -32,4 +32,16 @@ public class CarsTest {
         //랜덤이므로 위치가 0 이상인지 확인
         assertThat(carList).allMatch(car -> car.getPosition() >= 0);
     }
+
+    @Test
+    void 우승자_찾기() {
+        //given
+        Cars cars = new Cars(List.of("pobi", "woni", "jun"));
+
+        //when
+        List<Car> winners = cars.getWinners();
+
+        //then
+        assertThat(winners).isNotEmpty();
+    }
 }
