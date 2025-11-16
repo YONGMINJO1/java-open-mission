@@ -15,10 +15,14 @@ public class Car {
 
     private void validateName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 필수입니다.");
+            throw new IllegalArgumentException(
+                    ErrorMessage.NULL_OR_BLANK_NAME.getMessage()
+            );
         }
         if (name.length() > MAM_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(
+                    ErrorMessage.NAME_LENGTH_EXCEEDED.getMessage()
+            );
         }
     }
     public void move(int randomValue) {
