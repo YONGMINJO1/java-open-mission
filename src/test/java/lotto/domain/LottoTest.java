@@ -31,4 +31,15 @@ public class LottoTest {
                 .hasMessageContaining("6개");
 
     }
+
+    @Test
+    void 로또번호는_1부터_45_사이여야_한다() {
+        //given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 46);
+
+        //when & then
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1부터 45");
+    }
 }
