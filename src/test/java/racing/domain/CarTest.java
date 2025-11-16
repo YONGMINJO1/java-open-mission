@@ -29,4 +29,30 @@ public class CarTest {
         //then
         assertThat(position).isEqualTo(0);
     }
+
+    @Test
+    void 자동차는_전진할_수_있다() {
+        //given
+        Car car = new Car("pobi");
+
+        //when
+        car.move();
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 자동차는_여러번_전진할_수_있다() {
+        //given
+        Car car = new Car("pobi");
+
+        //when
+        car.move();
+        car.move();
+        car.move();
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(3);
+    }
 }
