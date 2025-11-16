@@ -15,7 +15,7 @@ public class InputView {
     public int readRaceCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
-        return Integer.parseInt(input);
+        return parseRaceCount(input);
     }
 
     private List<String> parseNames(String input) {
@@ -25,5 +25,13 @@ public class InputView {
             result.add(name.trim());
         }
         return result;
+    }
+
+    private int parseRaceCount(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
     }
 }
