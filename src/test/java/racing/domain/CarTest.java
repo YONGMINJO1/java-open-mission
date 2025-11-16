@@ -1,6 +1,8 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +56,20 @@ public class CarTest {
 
         //then
         assertThat(car.getPosition()).isEqualTo(3);
+    }
+
+    @Test
+    void 이름이_5자를_초과하면_예외가_발생한다() {
+        //when & then
+        assertThatThrownBy(() -> new Car("123456"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("5자 이하");
+    }
+
+    @Test
+    void 이름이_5자면_정상() {
+        //when & then
+        assertThatCode(() -> new Car("12345"))
+                .doesNotThrowAnyException();
     }
 }
