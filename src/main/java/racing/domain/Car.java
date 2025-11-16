@@ -2,6 +2,7 @@ package racing.domain;
 
 public class Car {
     private static final int MAM_NAME_LENGTH = 5;
+    private static final int MOVE_THRESHOLD = 4;
 
     private String name;
     private int position;
@@ -20,6 +21,11 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
     }
+    public void move(int randomValue) {
+        if (randomValue >= MOVE_THRESHOLD) {
+            position++;
+        }
+    }
 
     public String getName() {
         return name;
@@ -27,7 +33,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
-    public void move() {
-        position++;
-    }
+
 }

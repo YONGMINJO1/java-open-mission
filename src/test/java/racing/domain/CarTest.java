@@ -33,12 +33,12 @@ public class CarTest {
     }
 
     @Test
-    void 자동차는_전진할_수_있다() {
+    void 랜덤값이_4이상이면_자동차는_전진할_수_있다() {
         //given
         Car car = new Car("pobi");
 
         //when
-        car.move();
+        car.move(5);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -50,12 +50,24 @@ public class CarTest {
         Car car = new Car("pobi");
 
         //when
-        car.move();
-        car.move();
-        car.move();
+        car.move(5);
+        car.move(6);
+        car.move(4);
 
         //then
         assertThat(car.getPosition()).isEqualTo(3);
+    }
+
+    @Test
+    void 랜덤값이_4미만이면_전진하지_않는다() {
+        // given
+        Car car = new Car("pobi");
+
+        // when
+        car.move(3);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
