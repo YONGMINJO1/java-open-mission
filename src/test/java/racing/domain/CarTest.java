@@ -72,4 +72,20 @@ public class CarTest {
         assertThatCode(() -> new Car("12345"))
                 .doesNotThrowAnyException();
     }
+
+    @Test
+    void 이름이_null이면_예외가_발생한다() {
+        //when & then
+        assertThatThrownBy(() -> new Car(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름");
+    }
+
+    @Test
+    void 이름이_빈_문자열이면_예외가_발생한다() {
+        //when & then
+        assertThatThrownBy(() -> new Car(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름");
+    }
 }
