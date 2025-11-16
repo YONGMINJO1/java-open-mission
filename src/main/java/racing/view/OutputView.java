@@ -5,10 +5,15 @@ import java.util.List;
 import racing.domain.Car;
 
 public class OutputView {
+    private static final String RESULT_HEADER = "실행 결과";
+    private static final String WINNER_PREFIX = "최종 우승자 : ";
+    private static final String POSITION_MARKER = "-";
+    private static final String STATUS_SEPARATOR = " : ";
+    private static final String NAME_SEPARATOR = ", ";
 
     public void printResultHeader() {
         System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(RESULT_HEADER);
     }
 
     public void printRoundResult(List<Car> cars) {
@@ -20,12 +25,12 @@ public class OutputView {
 
     public void printWinners(List<Car> winners) {
         String names = collectNames(winners);
-        System.out.println("최종 우승자 : " + names);
+        System.out.println(WINNER_PREFIX + names);
     }
 
     private void printCarStatus(Car car) {
-        String position = "-".repeat(car.getPosition());
-        System.out.println(car.getName() + " : " + position);
+        String position = POSITION_MARKER.repeat(car.getPosition());
+        System.out.println(car.getName() + STATUS_SEPARATOR + position);
     }
 
     private String collectNames(List<Car> winners) {
@@ -33,6 +38,6 @@ public class OutputView {
         for (Car winner : winners) {
             names.add(winner.getName());
         }
-        return String.join(", ", names);
+        return String.join(NAME_SEPARATOR, names);
     }
 }
