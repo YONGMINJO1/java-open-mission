@@ -18,4 +18,15 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo("pobi");
     }
 
+    @Test
+    void 자동차는_처음에_0의_위치에_있다() {
+        //given
+        Car car = new Car("pobi");
+
+        //when
+        int position = car.getPosition();
+
+        //then
+        assertThat(position).isEqualTo(0);
+    }
 }
