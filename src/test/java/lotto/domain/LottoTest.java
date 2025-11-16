@@ -42,4 +42,15 @@ public class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1부터 45");
     }
+
+    @Test
+    void 로또번호는_중복되지_않아야_한다() {
+        //given
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 5);
+
+        //when & then
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복");
+    }
 }
