@@ -17,11 +17,18 @@ public class WinningNumbers {
 
     private void validateBonusNumber(int bonusNumber) {
         validateBonusRange(bonusNumber);
+        validateBonusDuplicate(bonusNumber);
     }
 
     private void validateBonusRange(int bonusNumber) {
         if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
             throw new IllegalArgumentException("보너스 번호는 1부터 45 사이여야 합니다.");
+        }
+    }
+
+    private void validateBonusDuplicate(int bonusNumber) {
+        if (winningLotto.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 }
