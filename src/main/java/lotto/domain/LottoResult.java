@@ -18,6 +18,18 @@ public class LottoResult {
         return map;
     }
 
+    public long getTotalPrize() {
+        long total = 0;
+        for (LottoRank rank : result.keySet()) {
+            total += calculatePrize(rank);
+        }
+        return total;
+    }
+
+    private long calculatePrize(LottoRank rank) {
+        return (long) rank.getPrizeMoney() * result.get(rank);
+    }
+
     public void addRank(LottoRank rank) {
         if (rank == null) {
             return;

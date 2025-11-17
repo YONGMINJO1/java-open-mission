@@ -35,4 +35,19 @@ public class LottoResultTest {
         assertThat(result.getCount(LottoRank.FIRST)).isEqualTo(0);
         assertThat(result.getCount(LottoRank.SECOND)).isEqualTo(0);
     }
+
+    @Test
+    void 총_상금을_계산할_수_있다() {
+        //given
+        LottoResult result = new LottoResult();
+        result.addRank(LottoRank.FIFTH);
+        result.addRank(LottoRank.FOURTH);
+        result.addRank(LottoRank.FOURTH);
+
+        //when
+        long totalPrize = result.getTotalPrize();
+
+        //then
+        assertThat(totalPrize).isEqualTo(105_000);
+    }
 }
