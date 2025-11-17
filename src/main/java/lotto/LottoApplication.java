@@ -7,11 +7,15 @@ import lotto.view.OutputView;
 
 public class LottoApplication {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        LottoGenerator lottoGenerator = new LottoGenerator();
+        try {
+            InputView inputView = new InputView();
+            OutputView outputView = new OutputView();
+            LottoGenerator lottoGenerator = new LottoGenerator();
 
-        LottoController controller = new LottoController(inputView, outputView, lottoGenerator);
-        controller.run();
+            LottoController controller = new LottoController(inputView, outputView, lottoGenerator);
+            controller.run();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
