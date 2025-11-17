@@ -148,7 +148,7 @@ public class WinningNumbersTest {
         int bonusNumber = 7;
         WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
 
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));  // 5개 + 보너스
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
         //when
         LottoRank rank = winning.check(lotto);
@@ -164,7 +164,7 @@ public class WinningNumbersTest {
         int bonusNumber = 7;
         WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
 
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));  // 5개만
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
 
         //when
         LottoRank rank = winning.check(lotto);
@@ -180,7 +180,7 @@ public class WinningNumbersTest {
         int bonusNumber = 7;
         WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
 
-        Lotto lotto = new Lotto(List.of(1, 2, 10, 11, 12, 13));  // 2개
+        Lotto lotto = new Lotto(List.of(1, 2, 10, 11, 12, 13));
 
         //when
         LottoRank rank = winning.check(lotto);
