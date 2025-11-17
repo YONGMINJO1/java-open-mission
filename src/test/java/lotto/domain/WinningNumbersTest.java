@@ -92,4 +92,36 @@ public class WinningNumbersTest {
         //then
         assertThat(matchCount).isEqualTo(6);
     }
+
+    @Test
+    void 보너스_번호가_일치하면_true를_반환한다() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        //when
+        boolean hasBonus = winning.hasBonusMatch(lotto);
+
+        //then
+        assertThat(hasBonus).isTrue();
+    }
+
+    @Test
+    void 보너스_번호가_일치하지_않으면_false를_반환한다() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+
+        //when
+        boolean hasBonus = winning.hasBonusMatch(lotto);
+
+        //then
+        assertThat(hasBonus).isFalse();
+    }
 }
