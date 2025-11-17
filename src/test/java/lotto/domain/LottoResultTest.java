@@ -50,4 +50,35 @@ public class LottoResultTest {
         //then
         assertThat(totalPrize).isEqualTo(105_000);
     }
+
+    @Test
+    void 수익률을_계산할_수_있다() {
+        //given
+        LottoResult result = new LottoResult();
+        result.addRank(LottoRank.FIFTH);
+        result.addRank(LottoRank.FOURTH);
+        result.addRank(LottoRank.FOURTH);
+
+        int purchaseAmount = 8000;
+
+        //when
+        double profitRate = result.getProfitRate(purchaseAmount);
+
+        //then
+        assertThat(profitRate).isEqualTo(1312.5);
+    }
+
+    @Test
+    void 당첨되지_앉으면_수익률은_0이다() {
+        //given
+        LottoResult result = new LottoResult();
+
+        int purchaseAmount = 8000;
+
+        //when
+        double profitRate = result.getProfitRate(purchaseAmount);
+
+        //then
+        assertThat(profitRate).isEqualTo(0.0);
+    }
 }

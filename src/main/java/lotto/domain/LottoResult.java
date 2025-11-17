@@ -18,6 +18,11 @@ public class LottoResult {
         return map;
     }
 
+    public double getProfitRate(int purchaseAmount) {
+        long totalPrize = getTotalPrize();
+        return (double) totalPrize / purchaseAmount * 100;
+    }
+
     public long getTotalPrize() {
         long total = 0;
         for (LottoRank rank : result.keySet()) {
