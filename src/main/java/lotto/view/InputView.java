@@ -42,13 +42,13 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
     }
 
     private void validatePurchaseAmount(int amount) {
         if (amount % Lotto.LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");
         }
     }
 }
