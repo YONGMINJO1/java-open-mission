@@ -15,6 +15,19 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
+    public int countMatches(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        List<Integer> winningNumbersList = winningLotto.getNumbers();
+
+        int count = 0;
+        for (int number : lottoNumbers) {
+            if (winningNumbersList.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private void validateBonusNumber(int bonusNumber) {
         validateBonusRange(bonusNumber);
         validateBonusDuplicate(bonusNumber);

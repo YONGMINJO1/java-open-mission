@@ -44,4 +44,52 @@ public class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복");
     }
+
+    @Test
+    void 로또와_일치하는_개수를_셀_수_있다() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+
+        //when
+        int matchCount = winning.countMatches(lotto);
+
+        //then
+        assertThat(matchCount).isEqualTo(5);
+    }
+
+    @Test
+    void 일치하는_번호가_없으면_0을_반환한다() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(10, 11, 12, 13, 14, 15));
+
+        //when
+        int matchCount = winning.countMatches(lotto);
+
+        //then
+        assertThat(matchCount).isEqualTo(0);
+    }
+
+    @Test
+    void 모두_일치하면_6을_반환한다() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        //when
+        int matchCount = winning.countMatches(lotto);
+
+        //then
+        assertThat(matchCount).isEqualTo(6);
+    }
 }
