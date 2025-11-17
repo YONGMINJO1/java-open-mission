@@ -3,12 +3,12 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class InputView {
     private static final String INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final int LOTTO_PRICE = 1000;
 
     public int readPurchaseAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
@@ -47,7 +47,7 @@ public class InputView {
     }
 
     private void validatePurchaseAmount(int amount) {
-        if (amount % LOTTO_PRICE != 0) {
+        if (amount % Lotto.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
         }
     }

@@ -31,7 +31,7 @@ public class LottoController {
 
     private Lottos purchaseLottos() {
         int amount = inputView.readPurchaseAmount();
-        int count = amount / 1000;
+        int count = amount / Lotto.LOTTO_PRICE;
 
         Lottos lottos = generateLottos(count);
         outputView.printLottos(lottos.getLottos());
@@ -67,7 +67,7 @@ public class LottoController {
     private void printResult(LottoResult result, int lottoCount) {
         outputView.printStatistics(result);
 
-        int purchaseAmount = lottoCount * 1000;
+        int purchaseAmount = lottoCount * Lotto.LOTTO_PRICE;
         double profitRate = result.getProfitRate(purchaseAmount);
         outputView.printProfitRate(profitRate);
     }
