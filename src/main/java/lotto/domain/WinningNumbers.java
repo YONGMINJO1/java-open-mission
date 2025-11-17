@@ -15,6 +15,12 @@ public class WinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
+    public LottoRank check(Lotto lotto) {
+        int matchCount = countMatches(lotto);
+        boolean bonusMatch = hasBonusMatch(lotto);
+        return LottoRank.valueOf(matchCount, bonusMatch);
+    }
+
     public boolean hasBonusMatch(Lotto lotto) {
         return lotto.getNumbers().contains(bonusNumber);
     }

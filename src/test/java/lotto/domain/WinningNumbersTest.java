@@ -124,4 +124,68 @@ public class WinningNumbersTest {
         //then
         assertThat(hasBonus).isFalse();
     }
+
+    @Test
+    void _6개_일치하면_1등() {
+        // given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        // when
+        LottoRank rank = winning.check(lotto);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.FIRST);
+    }
+
+    @Test
+    void _5개_일치_보너스_일치하면_2등() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));  // 5개 + 보너스
+
+        //when
+        LottoRank rank = winning.check(lotto);
+
+        //then
+        assertThat(rank).isEqualTo(LottoRank.SECOND);
+    }
+
+    @Test
+    void _5개_일치_보너스_불일치하면_3등() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));  // 5개만
+
+        //when
+        LottoRank rank = winning.check(lotto);
+
+        //then
+        assertThat(rank).isEqualTo(LottoRank.THIRD);
+    }
+
+    @Test
+    void _2개_이하_일치하면_null() {
+        //given
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        WinningNumbers winning = new WinningNumbers(winningNumbers, bonusNumber);
+
+        Lotto lotto = new Lotto(List.of(1, 2, 10, 11, 12, 13));  // 2개
+
+        //when
+        LottoRank rank = winning.check(lotto);
+
+        //then
+        assertThat(rank).isNull();
+    }
 }
