@@ -30,4 +30,34 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(2);
     }
+
+    @Test
+    void Twos_카테고리는_2의_개수를_합산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(2), new Dice(2), new Dice(2),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        int score = Category.TWOS.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(6);
+    }
+
+    @Test
+    void Threes_카테고리는_3의_개수를_합산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(1), new Dice(2),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        int score = Category.THREES.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(3);
+    }
 }
