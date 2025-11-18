@@ -32,4 +32,15 @@ public class OutputView {
             System.out.println((i + 1) + ", " + categories.get(i).getName());
         }
     }
+
+    public static void printScore(Category category, int score) {
+        System.out.println();
+        System.out.println(category.getName() + ": " + score + "점이 기록되었습니다.");
+    }
+
+    public static void printFinalScore(int totalScore) {
+        System.out.println();
+        System.out.println("게임이 종료되었습니다.");
+        System.out.println("최종 점수: " + totalScore + "점");
+    }
 }
