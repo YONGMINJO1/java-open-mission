@@ -53,4 +53,23 @@ public class DicesTest {
         assertThat(dices.countValue(2)).isEqualTo(0);
         assertThat(dices.countValue(3)).isEqualTo(1);
     }
+
+    @Test
+    void 모든_주사위의_합을_계산할_수_있다() {
+        //given
+        List<Dice> diceList = List.of(
+                new Dice(1),
+                new Dice(2),
+                new Dice(3),
+                new Dice(4),
+                new Dice(5)
+        );
+        Dices dices = new Dices(diceList);
+
+        //when
+        int sum = dices.sumAll();
+
+        //then
+        assertThat(sum).isEqualTo(15);
+    }
 }
