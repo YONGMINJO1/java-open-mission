@@ -21,6 +21,10 @@ public class Dice {
         }
     }
 
+    public static Dice roll() {
+        return new Dice(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
+    }
+
     public int getValue() {
         return value;
     }

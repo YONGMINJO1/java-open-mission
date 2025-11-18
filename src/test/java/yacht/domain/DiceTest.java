@@ -40,4 +40,15 @@ public class DiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1부터 6");
     }
+
+    @Test
+    void 주사위를_무작위로_생성할_수_있다() {
+        //given & when
+        Dice dice = Dice.roll();
+
+        //then
+        assertThat(dice.getValue())
+                .isGreaterThanOrEqualTo(1)
+                .isLessThanOrEqualTo(6);
+    }
 }
