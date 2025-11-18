@@ -23,6 +23,12 @@ public class Dices {
         }
     }
 
+    public int countValue(int target) {
+        return (int) dices.stream()
+                .filter(dice -> dice.isSameValue(target))
+                .count();
+    }
+
     public List<Integer> getValues() {
         return dices.stream()
                 .map(Dice::getValue)

@@ -38,4 +38,19 @@ public class DicesTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("5개");
     }
+
+    @Test
+    void 특정_숫자의_개수를_셀_수_있다() {
+        // given
+        List<Dice> diceList = List.of(
+                new Dice(1), new Dice(1), new Dice(3),
+                new Dice(4), new Dice(5)
+        );
+        Dices dices = new Dices(diceList);
+
+        //when & then
+        assertThat(dices.countValue(1)).isEqualTo(2);
+        assertThat(dices.countValue(2)).isEqualTo(0);
+        assertThat(dices.countValue(3)).isEqualTo(1);
+    }
 }
