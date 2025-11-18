@@ -51,4 +51,14 @@ public class DiceTest {
                 .isGreaterThanOrEqualTo(1)
                 .isLessThanOrEqualTo(6);
     }
+
+    @Test
+    void 특정_값과_같은지_확인할_수_있다() {
+        //given
+        Dice dice = new Dice(3);
+
+        //when & then
+        assertThat(dice.isSameValue(3)).isTrue();
+        assertThat(dice.isSameValue(4)).isFalse();
+    }
 }

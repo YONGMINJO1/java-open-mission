@@ -25,6 +25,10 @@ public class Dice {
         return new Dice(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
     }
 
+    public boolean isSameValue(int target) {
+        return this.value == target;
+    }
+
     public int getValue() {
         return value;
     }
