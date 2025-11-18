@@ -1,6 +1,7 @@
 package yacht.view;
 
 import java.util.List;
+import yacht.domain.Category;
 
 public class OutputView {
 
@@ -21,5 +22,14 @@ public class OutputView {
         }
         result.append("]");
         System.out.println(result.toString());
+    }
+
+    public static void printCategories(List<Category> categories) {
+        System.out.println();
+        System.out.println("선택 가능한 카테고리: ");
+
+        for (int i = 0; i < categories.size(); i++) {
+            System.out.println((i + 1) + ", " + categories.get(i).getName());
+        }
     }
 }
