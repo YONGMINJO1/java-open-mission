@@ -23,6 +23,14 @@ public class Dices {
         }
     }
 
+    public static Dices roll() {
+        List<Dice> diceList = new ArrayList<>();
+        for (int i = 0; i < DICE_COUNT; i++) {
+            diceList.add(Dice.roll());
+        }
+        return new Dices(diceList);
+    }
+
     public int sumAll() {
         return dices.stream()
                 .mapToInt(Dice::getValue)

@@ -72,4 +72,13 @@ public class DicesTest {
         //then
         assertThat(sum).isEqualTo(15);
     }
+
+    @Test
+    void 주사위_5개를_무작위로_생성할_수_있다() {
+        //when
+        Dices dices = Dices.roll();
+
+        //then
+        assertThat(dices.getValues()).hasSize(5);
+    }
 }
