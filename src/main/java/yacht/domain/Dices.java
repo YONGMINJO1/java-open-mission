@@ -5,10 +5,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Dices {
+    private static final int DICE_COUNT = 5;
+
+
     private final List<Dice> dices;
 
     public Dices(List<Dice> dices) {
+        validateSize(dices);
         this.dices = new ArrayList<>(dices);
+    }
+
+    private void validateSize(List<Dice> dices) {
+        if (dices.size() != DICE_COUNT) {
+            throw new IllegalArgumentException(
+                    "주사위는 " + DICE_COUNT + "개여야 합니다."
+            );
+        }
     }
 
     public List<Integer> getValues() {
