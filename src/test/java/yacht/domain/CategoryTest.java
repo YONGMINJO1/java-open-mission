@@ -60,4 +60,19 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(3);
     }
+
+    @Test
+    void Choice_카테고리는_모든_주사위의_합을_계산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        int score = Category.CHOICE.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(15);
+    }
 }
