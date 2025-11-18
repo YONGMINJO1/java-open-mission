@@ -37,6 +37,12 @@ public class ScoreBoard {
         return usedCategories.size() == Category.values().length;
     }
 
+    public int getTotalScore() {
+        return scores.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
     public Map<Category, Integer> getScores() {
         return new EnumMap<>(scores);
     }

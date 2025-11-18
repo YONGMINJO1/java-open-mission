@@ -52,4 +52,20 @@ public class ScoreBoardTest {
         //then
         assertThat(scoreBoard.isGameOver()).isTrue();
     }
+
+    @Test
+    void 총점을_계산할_수_있다() {
+        //given
+        ScoreBoard scoreBoard = new ScoreBoard();
+        scoreBoard.recordScore(Category.ONES, 2);
+        scoreBoard.recordScore(Category.TWOS, 4);
+        scoreBoard.recordScore(Category.THREES, 6);
+        scoreBoard.recordScore(Category.CHOICE, 15);
+
+        //when
+        int totalScore = scoreBoard.getTotalScore();
+
+        //then
+        assertThat(totalScore).isEqualTo(27);
+    }
 }
