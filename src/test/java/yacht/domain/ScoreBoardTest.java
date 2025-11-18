@@ -32,4 +32,24 @@ public class ScoreBoardTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("이미 사용");
     }
+
+    @Test
+    void 모든_카테고리를_사용하면_게임이_종료된다() {
+        //given
+        ScoreBoard scoreBoard = new ScoreBoard();
+
+        //when
+        scoreBoard.recordScore(Category.ONES, 2);
+        scoreBoard.recordScore(Category.TWOS, 4);
+        scoreBoard.recordScore(Category.THREES, 6);
+
+        //then
+        assertThat(scoreBoard.isGameOver()).isFalse();
+
+        //when
+        scoreBoard.recordScore(Category.CHOICE, 15);
+
+        //then
+        assertThat(scoreBoard.isGameOver()).isTrue();
+    }
 }

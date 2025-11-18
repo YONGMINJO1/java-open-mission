@@ -33,6 +33,10 @@ public class ScoreBoard {
         }
     }
 
+    public boolean isGameOver() {
+        return usedCategories.size() == Category.values().length;
+    }
+
     public Map<Category, Integer> getScores() {
         return new EnumMap<>(scores);
     }
