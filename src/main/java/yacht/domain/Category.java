@@ -7,6 +7,7 @@ public enum Category {
     FOURS("Fours", 4),
     FIVES("Fives", 5),
     SIXES("Sixes", 6),
+    FOUR_OF_A_KIND("Four of a Kind", 0),
     CHOICE("Choice", 0);
 
     private final String name;
@@ -19,6 +20,13 @@ public enum Category {
 
     public int calculateScore(Dices dices) {
         if (this == CHOICE) {
+            return dices.sumAll();
+        }
+        if (this == FOUR_OF_A_KIND) {
+            int value = dices.getFourOfAKindValue();
+            if (value == 0) {
+                return 0;
+            }
             return dices.sumAll();
         }
         return dices.countValue(targetNumber) * targetNumber;

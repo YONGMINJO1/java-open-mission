@@ -120,4 +120,49 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(24);
     }
+
+    @Test
+    void FourOfAKind_카테고리는_모든_주사위의_총합을_계산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(5)
+        ));
+
+        //when
+        int score = Category.FOUR_OF_A_KIND.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(17);
+    }
+
+    @Test
+    void FourOfAKind_카테고리는_4개가_없으면_0점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        int score = Category.FOUR_OF_A_KIND.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(0);
+    }
+
+    @Test
+    void FourOfAKind_카테고리는_5개_모두_같으면_총합을_계산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(6), new Dice(6), new Dice(6),
+                new Dice(6), new Dice(6)
+        ));
+
+        //when
+        int score = Category.FOUR_OF_A_KIND.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(30);
+    }
 }
