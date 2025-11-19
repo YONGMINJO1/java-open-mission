@@ -1,7 +1,9 @@
 package yacht.domain;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,5 +47,15 @@ public class ScoreBoard {
 
     public Map<Category, Integer> getScores() {
         return new EnumMap<>(scores);
+    }
+
+    public List<Category> getAvailableCategories() {
+        List<Category> available = new ArrayList<>();
+        for (Category category : Category.values()) {
+            if (!usedCategories.contains(category)) {
+                available.add(category);
+            }
+        }
+        return available;
     }
 }
