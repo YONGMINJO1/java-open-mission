@@ -49,6 +49,22 @@ public class Dices {
         return new Dices(diceList);
     }
 
+    public void rerollSelected(List<Integer> positions) {
+        for (int position : positions) {
+            int index = position - 1;
+            validatePosition(index);
+            dices.set(index, Dice.roll());
+        }
+    }
+
+    private void validatePosition(int index) {
+        if (index < 0 || index >= DICE_COUNT) {
+            throw new IllegalArgumentException(
+                    "주사위 위치는 0부터 " + (DICE_COUNT - 1) + " 사이여야 합니다."
+            );
+        }
+    }
+
     public int sumAll() {
         return dices.stream()
                 .mapToInt(Dice::getValue)

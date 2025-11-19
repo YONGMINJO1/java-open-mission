@@ -336,4 +336,37 @@ public class DicesTest {
         //then
         assertThat(isLargeStraight).isTrue();
     }
+
+    @Test
+    void 선택한_주사위만_재굴림할_수_있다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        dices.rerollSelected(List.of(1, 3, 5));
+
+        //then
+        List<Integer> values = dices.getValues();
+        //2번, 4번 주사위는 그대로
+        assertThat(values.get(1)).isEqualTo(2);
+        assertThat(values.get(3)).isEqualTo(4);
+        //1번, 3번, 5번은 변경
+        assertThat(values.get(0)).isBetween(1, 6);
+        assertThat(values.get(2)).isBetween(1, 6);
+        assertThat(values.get(4)).isBetween(1, 6);
+    }
+
+    @Test
+    void 잘못된_위치_선택_시_예외_발생() {
+        //given
+        Dices dices = Dices.roll();
+
+        //when & then
+        assertThatThrownBy(() -> dices.rerollSelected(List.of(0, 3)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("위치");
+    }
 }
