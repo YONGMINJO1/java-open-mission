@@ -10,6 +10,7 @@ public enum Category {
     FOUR_OF_A_KIND("Four of a Kind", 0),
     FULL_HOUSE("Full House", 0),
     SMALL_STRAIGHT("Small Straight", 0),
+    LARGE_STRAIGHT("Large Straight", 0),
     YACHT("Yacht", 0),
     CHOICE("Choice", 0);
 
@@ -41,6 +42,12 @@ public enum Category {
         if (this == SMALL_STRAIGHT) {
             if (dices.isSmallStraight()) {
                 return 15;
+            }
+            return 0;
+        }
+        if (this == LARGE_STRAIGHT) {
+            if (dices.isLargeStraight()) {
+                return 30;
             }
             return 0;
         }
