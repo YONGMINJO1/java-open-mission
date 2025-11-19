@@ -1,6 +1,11 @@
 package yacht.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import com.sun.source.tree.UsesTree;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class InputView {
 
@@ -25,6 +30,46 @@ public class InputView {
         validateNotEmpty(input);
         validateRerollFormat(input);
         return isYes(input);
+    }
+
+    public static List<Integer> readDiceSelection() {
+        System.out.println();
+        System.out.print("다시 굴릴 주사위를 선택하세요 (예: 1,3,5): ");
+        String input = Console.readLine();
+        validateNotEmpty(input);
+        return parseDiceSelection(input);
+    }
+
+    private static List<Integer> parseDiceSelection(String input) {
+        String[] parts = input.split(",");
+        List<Integer> selection = new ArrayList<>();
+
+        for (String part : parts) {
+            String trimmed = part.trim();
+            validateNumberFormat(trimmed);
+            int number = Integer.parseInt(trimmed);
+            validateDiceNumber(number);
+            selection.add(number);
+        }
+        validateNoDuplicates(selection);
+        return selection;
+    }
+
+    private static void validateDiceNumber(int number) {
+        if (number < 1 || number > 5) {
+            throw new IllegalArgumentException(
+                    "[ERROR] 주사위 번호는 1부터 5 사이여야 합니다."
+            );
+        }
+    }
+
+    private static void validateNoDuplicates(List<Integer> selection) {
+        Set<Integer> uniqueNumbers = new HashSet<>(selection);
+        if (uniqueNumbers.size() != selection.size()) {
+            throw new IllegalArgumentException(
+                    "[ERROR] 중복된 주사위 번호가 있습니다."
+            );
+        }
     }
 
     private static void validateNumberFormat(String input) {
