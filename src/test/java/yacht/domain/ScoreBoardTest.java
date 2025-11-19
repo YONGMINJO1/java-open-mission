@@ -42,12 +42,17 @@ public class ScoreBoardTest {
         scoreBoard.recordScore(Category.ONES, 2);
         scoreBoard.recordScore(Category.TWOS, 4);
         scoreBoard.recordScore(Category.THREES, 6);
+        scoreBoard.recordScore(Category.FOURS, 4);
+        scoreBoard.recordScore(Category.FIVES, 5);
+        scoreBoard.recordScore(Category.SIXES, 6);
+        scoreBoard.recordScore(Category.FOUR_OF_A_KIND, 12);
+        scoreBoard.recordScore(Category.CHOICE, 15);
 
         //then
         assertThat(scoreBoard.isGameOver()).isFalse();
 
         //when
-        scoreBoard.recordScore(Category.CHOICE, 15);
+        scoreBoard.recordScore(Category.YACHT, 50);
 
         //then
         assertThat(scoreBoard.isGameOver()).isTrue();
