@@ -8,6 +8,8 @@ import yacht.view.InputView;
 import yacht.view.OutputView;
 
 public class YachtGameController {
+    private static final int MAX_REROLL_COUNT = 2;
+
     private final ScoreBoard scoreBoard;
 
     public YachtGameController() {
@@ -28,30 +30,41 @@ public class YachtGameController {
 
     private void playRound() {
         Dices dices = throwDiceAndShow();
-        testRerollInput(dices);
+        selectedDiceReroll(dices);
         Category category = selectCategory();
         recordScore(category, dices);
     }
 
-    private void testRerollInput(Dices dices) {
-        try {
-            boolean reroll = InputView.readRerollChoice();
+    private void selectedDiceReroll(Dices dices) {
+        int rerollCount = 0;
 
-            if (reroll) {
-                System.out.println("✅ 재굴림을 선택했습니다!");
-
-                List<Integer> selection = InputView.readDiceSelection();
-                System.out.println("✅ 선택한 주사위: " + selection);
-
-                System.out.println("현재 주사위: " + dices.getValues());
-
-            } else {
-                System.out.println("✅ 재굴림하지 않습니다.");
+        while (rerollCount < MAX_REROLL_COUNT) {
+            if (!askReroll()) {
+                break;
             }
+            performReroll(dices);
+            rerollCount++;
+        }
+    }
 
+    private boolean askReroll() {
+        try {
+            return InputView.readRerollChoice();
         } catch (IllegalArgumentException e) {
-            System.out.println("❌ 오류 발생: " + e.getMessage());
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 
+    private void performReroll(Dices dices) {
+        try {
+            List<Integer> selection = InputView.readDiceSelection();
+            dices.rerollSelected(selection);
+            System.out.println();
+            System.out.println("주사위를 다시 굴립니다.");
+            OutputView.printDices(dices.getValues());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 
