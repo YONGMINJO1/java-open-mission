@@ -95,7 +95,19 @@ public class Dices {
         if (hasValue(3) && hasValue(4) && hasValue(5) && hasValue(6)) {
             return true;
         }
+        return false;
+    }
 
+    public boolean isLargeStraight() {
+        if (hasValue(1) && hasValue(2) && hasValue(3) &&
+                hasValue(4) && hasValue(5)) {
+            return true;
+        }
+
+        if (hasValue(2) && hasValue(3) && hasValue(4) &&
+                hasValue(5) && hasValue(6)) {
+            return true;
+        }
         return false;
     }
 

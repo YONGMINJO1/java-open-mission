@@ -276,4 +276,64 @@ public class DicesTest {
         //then
         assertThat(isSmallStraight).isTrue();
     }
+
+    @Test
+    void 연속된_5개_숫자가_있으면_Large_Straight다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        boolean isLargeStraight = dices.isLargeStraight();
+
+        //then
+        assertThat(isLargeStraight).isTrue();
+    }
+
+    @Test
+    void 높은_패턴도_Large_Straight다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(2), new Dice(3), new Dice(4),
+                new Dice(5), new Dice(6)
+        ));
+
+        //when
+        boolean isLargeStraight = dices.isLargeStraight();
+
+        //then
+        assertThat(isLargeStraight).isTrue();
+    }
+
+    @Test
+    void 하나라도_빠지면_Large_Straight가_아니다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(5), new Dice(6)
+        ));
+
+        //when
+        boolean isLargeStraight = dices.isLargeStraight();
+
+        //then
+        assertThat(isLargeStraight).isFalse();
+    }
+
+    @Test
+    void 순서는_상관없다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(5), new Dice(1), new Dice(3),
+                new Dice(2), new Dice(4)
+        ));
+
+        //when
+        boolean isLargeStraight = dices.isLargeStraight();
+
+        //then
+        assertThat(isLargeStraight).isTrue();
+    }
 }
