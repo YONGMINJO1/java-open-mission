@@ -17,12 +17,24 @@ public class YachtGameController {
     public void run() {
         OutputView.printGameStart();
         playRound();
+        finishGame();
+    }
+
+    private void playAllRound() {
+        while (!scoreBoard.isGameOver()) {
+            playRound();
+        }
     }
 
     private void playRound() {
         Dices dices = throwDiceAndShow();
         Category category = selsctCategory();
         recordScore(category, dices);
+    }
+
+    private void finishGame() {
+        int totalScore = scoreBoard.getTotalScore();
+        OutputView.printFinalScore(totalScore);
     }
 
     private Dices throwDiceAndShow() {
