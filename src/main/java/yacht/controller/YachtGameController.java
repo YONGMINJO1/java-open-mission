@@ -16,11 +16,11 @@ public class YachtGameController {
 
     public void run() {
         OutputView.printGameStart();
-        playRound();
+        playAllRounds();
         finishGame();
     }
 
-    private void playAllRound() {
+    private void playAllRounds() {
         while (!scoreBoard.isGameOver()) {
             playRound();
         }
@@ -28,7 +28,7 @@ public class YachtGameController {
 
     private void playRound() {
         Dices dices = throwDiceAndShow();
-        Category category = selsctCategory();
+        Category category = selectCategory();
         recordScore(category, dices);
     }
 
@@ -44,7 +44,7 @@ public class YachtGameController {
         return dices;
     }
 
-    private Category selsctCategory() {
+    private Category selectCategory() {
         List<Category> availableCategories = scoreBoard.getAvailableCategories();
         OutputView.printCategories(availableCategories);
 
