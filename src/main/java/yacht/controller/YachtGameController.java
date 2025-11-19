@@ -48,10 +48,15 @@ public class YachtGameController {
         List<Category> availableCategories = scoreBoard.getAvailableCategories();
         OutputView.printCategories(availableCategories);
 
-        int number = InputView.readCategoryNumber();
-        validateCategoryNumber(number, availableCategories.size());
-
-        return availableCategories.get(number - 1);
+        while (true) {
+            try {
+                int number = InputView.readCategoryNumber();
+                validateCategoryNumber(number, availableCategories.size());
+                return availableCategories.get(number - 1);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private void validateCategoryNumber(int number, int maxSize) {
