@@ -81,4 +81,49 @@ public class DicesTest {
         //then
         assertThat(dices.getValues()).hasSize(5);
     }
+
+    @Test
+    void 같은_숫자_4개_이상이_있으면_그_숫자를_반환한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(5)
+        ));
+
+        //when
+        int value = dices.getFourOfAKindValue();
+
+        //then
+        assertThat(value).isEqualTo(3);
+    }
+
+    @Test
+    void 같은_숫자_4개가_없으면_0을_반환한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(5)
+        ));
+
+        //when
+        int value = dices.getFourOfAKindValue();
+
+        //then
+        assertThat(value).isEqualTo(0);
+    }
+
+    @Test
+    void 모두_같은_숫자면_그_숫자를_반환한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(5), new Dice(5), new Dice(5),
+                new Dice(5), new Dice(5)
+        ));
+
+        //when
+        int value = dices.getFourOfAKindValue();
+
+        //then
+        assertThat(value).isEqualTo(5);
+    }
 }

@@ -23,6 +23,15 @@ public class Dices {
         }
     }
 
+    public  int getFourOfAKindValue() {
+        for (int value = 1; value <= 6; value++) {
+            if (countValue(value) >= 4) {
+                return value;
+            }
+        }
+        return 0;
+    }
+
     public static Dices roll() {
         List<Dice> diceList = new ArrayList<>();
         for (int i = 0; i < DICE_COUNT; i++) {
