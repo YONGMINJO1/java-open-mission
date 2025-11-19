@@ -201,4 +201,79 @@ public class DicesTest {
         //then
         assertThat(isFullHouse).isTrue();
     }
+
+    @Test
+    void 연속된_4개_숫자가_있으면_Small_Straight다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(6)
+        ));
+
+        //when
+        boolean isSmallStraight = dices.isSmallStraight();
+
+        //then
+        assertThat(isSmallStraight).isTrue();
+    }
+
+    @Test
+    void 중간_패턴도_Small_Straight다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(2), new Dice(3), new Dice(4),
+                new Dice(5), new Dice(1)
+        ));
+
+        //when
+        boolean isSmallStraight = dices.isSmallStraight();
+
+        //then
+        assertThat(isSmallStraight).isTrue();
+    }
+
+    @Test
+    void 높은_패턴도_Small_Straight다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(4), new Dice(5),
+                new Dice(6), new Dice(1)
+        ));
+
+        //when
+        boolean isSmallStraight = dices.isSmallStraight();
+
+        //then
+        assertThat(isSmallStraight).isTrue();
+    }
+
+    @Test
+    void 연속이_끊기면_Small_Straight가_아니다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(4),
+                new Dice(5), new Dice(6)
+        ));
+
+        //when
+        boolean isSmallStraight = dices.isSmallStraight();
+
+        //then
+        assertThat(isSmallStraight).isFalse();
+    }
+
+    @Test
+    void 중복이_있어도_Small_Straight를_판별한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(1), new Dice(2),
+                new Dice(3), new Dice(4)
+        ));
+
+        //when
+        boolean isSmallStraight = dices.isSmallStraight();
+
+        //then
+        assertThat(isSmallStraight).isTrue();
+    }
 }

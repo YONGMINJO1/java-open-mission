@@ -82,4 +82,24 @@ public class Dices {
         }
         return hasThree && hasTwo;
     }
+
+    public boolean isSmallStraight() {
+        if (hasValue(1) && hasValue(2) && hasValue(3) && hasValue(4)) {
+            return true;
+        }
+
+        if (hasValue(2) && hasValue(3) && hasValue(4) && hasValue(5)) {
+            return true;
+        }
+
+        if (hasValue(3) && hasValue(4) && hasValue(5) && hasValue(6)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean hasValue(int value) {
+        return countValue(value) > 0;
+    }
 }
