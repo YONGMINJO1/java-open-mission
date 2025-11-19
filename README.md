@@ -141,12 +141,12 @@
 - [x] `Four of a Kind`: 같은 숫자 4개 이상 - 4개 합산
 - [x] `Yacht`: 5개 모두 같은 숫자 - 50점
 
-#### ver 3 구현 내역 (예정)
+#### ver 3 구현 내역 (진행중)
 
 ##### 추가 카테고리
-- [ ] Full House (3개 + 2개)
-- [ ] Small Straight (1,2,3,4,5 또는 2,3,4,5,6)
-- [ ] Large Straight (1,2,3,4,5,6)
+- [x] Full House (3개 + 2개)
+- [x] Small Straight (1,2,3,4,5 또는 2,3,4,5,6)
+- [x] Large Straight (1,2,3,4,5,6)
 
 ##### 재굴림 기능
 - [ ] 재굴림 여부 입력
