@@ -23,6 +23,15 @@ public class Dices {
         }
     }
 
+    public boolean isYacht() {
+        for (int value = 1; value <= 6; value++) {
+            if (countValue(value) == 5) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public  int getFourOfAKindValue() {
         for (int value = 1; value <= 6; value++) {
             if (countValue(value) >= 4) {

@@ -126,4 +126,34 @@ public class DicesTest {
         //then
         assertThat(value).isEqualTo(5);
     }
+
+    @Test
+    void 모든_주사위가_같은_숫자면_Yacht이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(3)
+        ));
+
+        //when
+        boolean isYacht = dices.isYacht();
+
+        //then
+        assertThat(isYacht).isTrue();
+    }
+
+    @Test
+    void 하나라도_다르면_Yacht가_아니다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(5)
+        ));
+
+        //when
+        boolean isYacht = dices.isYacht();
+
+        //then
+        assertThat(isYacht).isFalse();
+    }
 }
