@@ -225,4 +225,34 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(0);
     }
+
+    @Test
+    void SmallStraight_카테고리는_연속_4개면_15점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(3),
+                new Dice(4), new Dice(6)
+        ));
+
+        //when
+        int score = Category.SMALL_STRAIGHT.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(15);
+    }
+
+    @Test
+    void SmallStraight_카테고리는_연속이_없으면_0점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(1), new Dice(2), new Dice(4),
+                new Dice(5), new Dice(6)
+        ));
+
+        //when
+        int score = Category.SMALL_STRAIGHT.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(0);
+    }
 }

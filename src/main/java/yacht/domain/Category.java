@@ -9,6 +9,7 @@ public enum Category {
     SIXES("Sixes", 6),
     FOUR_OF_A_KIND("Four of a Kind", 0),
     FULL_HOUSE("Full House", 0),
+    SMALL_STRAIGHT("Small Straight", 0),
     YACHT("Yacht", 0),
     CHOICE("Choice", 0);
 
@@ -34,6 +35,12 @@ public enum Category {
         if (this == FULL_HOUSE) {
             if (dices.isFullHouse()) {
                 return dices.sumAll();
+            }
+            return 0;
+        }
+        if (this == SMALL_STRAIGHT) {
+            if (dices.isSmallStraight()) {
+                return 15;
             }
             return 0;
         }

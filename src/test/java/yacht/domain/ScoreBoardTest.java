@@ -47,6 +47,7 @@ public class ScoreBoardTest {
         scoreBoard.recordScore(Category.SIXES, 6);
         scoreBoard.recordScore(Category.FOUR_OF_A_KIND, 12);
         scoreBoard.recordScore(Category.FULL_HOUSE, 25);
+        scoreBoard.recordScore(Category.SMALL_STRAIGHT, 15);
         scoreBoard.recordScore(Category.CHOICE, 15);
 
         //then
