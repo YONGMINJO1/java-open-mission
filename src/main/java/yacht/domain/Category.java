@@ -8,6 +8,7 @@ public enum Category {
     FIVES("Fives", 5),
     SIXES("Sixes", 6),
     FOUR_OF_A_KIND("Four of a Kind", 0),
+    FULL_HOUSE("Full House", 0),
     YACHT("Yacht", 0),
     CHOICE("Choice", 0);
 
@@ -29,6 +30,12 @@ public enum Category {
                 return 0;
             }
             return dices.sumAll();
+        }
+        if (this == FULL_HOUSE) {
+            if (dices.isFullHouse()) {
+                return dices.sumAll();
+            }
+            return 0;
         }
         if (this == YACHT) {
             if (dices.isYacht()) {

@@ -195,4 +195,34 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(0);
     }
+
+    @Test
+    void FullHouse_카테고리는_3개와_2개_패턴이면_총합을_계산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(5), new Dice(5)
+        ));
+
+        //when
+        int score = Category.FULL_HOUSE.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(19);  // 3+3+3+5+5
+    }
+
+    @Test
+    void FullHouse_카테고리는_패턴이_아니면_0점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(5)
+        ));
+
+        //when
+        int score = Category.FULL_HOUSE.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(0);
+    }
 }
