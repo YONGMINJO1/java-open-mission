@@ -28,8 +28,31 @@ public class YachtGameController {
 
     private void playRound() {
         Dices dices = throwDiceAndShow();
+        testRerollInput(dices);
         Category category = selectCategory();
         recordScore(category, dices);
+    }
+
+    private void testRerollInput(Dices dices) {
+        try {
+            boolean reroll = InputView.readRerollChoice();
+
+            if (reroll) {
+                System.out.println("✅ 재굴림을 선택했습니다!");
+
+                List<Integer> selection = InputView.readDiceSelection();
+                System.out.println("✅ 선택한 주사위: " + selection);
+
+                System.out.println("현재 주사위: " + dices.getValues());
+
+            } else {
+                System.out.println("✅ 재굴림하지 않습니다.");
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("❌ 오류 발생: " + e.getMessage());
+
+        }
     }
 
     private void finishGame() {
