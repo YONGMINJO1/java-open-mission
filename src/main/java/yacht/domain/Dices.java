@@ -66,4 +66,20 @@ public class Dices {
                 .map(Dice::getValue)
                 .collect(Collectors.toList());
     }
+
+    public boolean isFullHouse() {
+        boolean hasThree = false;
+        boolean hasTwo = false;
+
+        for (int value = 1; value <= 6; value++) {
+            int count = countValue(value);
+            if (count == 3) {
+                hasThree = true;
+            }
+            if (count == 2) {
+                hasTwo = true;
+            }
+        }
+        return hasThree && hasTwo;
+    }
 }

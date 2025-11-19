@@ -156,4 +156,49 @@ public class DicesTest {
         //then
         assertThat(isYacht).isFalse();
     }
+
+    @Test
+    void Full_House_패턴이면_true를_반환한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(5), new Dice(5)
+        ));
+
+        //when
+        boolean isFullHouse = dices.isFullHouse();
+
+        //then
+        assertThat(isFullHouse).isTrue();
+    }
+
+    @Test
+    void Full_House가_아니면_false를_반환한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(3), new Dice(3), new Dice(3),
+                new Dice(3), new Dice(5)
+        ));
+
+        //when
+        boolean isFullHouse = dices.isFullHouse();
+
+        //then
+        assertThat(isFullHouse).isFalse();
+    }
+
+    @Test
+    void 순서가_바뀌어도_Full_House를_판별한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(5), new Dice(5), new Dice(3),
+                new Dice(3), new Dice(3)
+        ));
+
+        //when
+        boolean isFullHouse = dices.isFullHouse();
+
+        //then
+        assertThat(isFullHouse).isTrue();
+    }
 }
