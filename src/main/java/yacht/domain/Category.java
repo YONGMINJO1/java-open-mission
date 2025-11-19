@@ -4,6 +4,9 @@ public enum Category {
     ONES("Ones", 1),
     TWOS("Twos", 2),
     THREES("Threes", 3),
+    FOURS("Fours", 4),
+    FIVES("Fives", 5),
+    SIXES("Sixes", 6),
     CHOICE("Choice", 0);
 
     private final String name;

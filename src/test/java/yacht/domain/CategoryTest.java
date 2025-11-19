@@ -75,4 +75,49 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(15);
     }
+
+    @Test
+    void Fours_카테고리는_4의_개수를_합산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(4), new Dice(4), new Dice(4),
+                new Dice(1), new Dice(2)
+        ));
+
+        //when
+        int score = Category.FOURS.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(12);
+    }
+
+    @Test
+    void Fives_카테고리는_5의_개수를_합산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(5), new Dice(5), new Dice(1),
+                new Dice(2), new Dice(3)
+        ));
+
+        //when
+        int score = Category.FIVES.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(10);
+    }
+
+    @Test
+    void Sixes_카테고리는_6의_개수를_합산한다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(6), new Dice(6), new Dice(6),
+                new Dice(6), new Dice(1)
+        ));
+
+        //when
+        int score = Category.SIXES.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(24);
+    }
 }
