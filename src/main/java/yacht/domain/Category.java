@@ -8,6 +8,7 @@ public enum Category {
     FIVES("Fives", 5),
     SIXES("Sixes", 6),
     FOUR_OF_A_KIND("Four of a Kind", 0),
+    YACHT("Yacht", 0),
     CHOICE("Choice", 0);
 
     private final String name;
@@ -28,6 +29,12 @@ public enum Category {
                 return 0;
             }
             return dices.sumAll();
+        }
+        if (this == YACHT) {
+            if (dices.isYacht()) {
+                return 50;
+            }
+            return 0;
         }
         return dices.countValue(targetNumber) * targetNumber;
     }

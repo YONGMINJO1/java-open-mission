@@ -165,4 +165,34 @@ public class CategoryTest {
         //then
         assertThat(score).isEqualTo(30);
     }
+
+    @Test
+    void Yacht_카테고리는_5개가_모두_같으면_50점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(6), new Dice(6), new Dice(6),
+                new Dice(6), new Dice(6)
+        ));
+
+        //when
+        int score = Category.YACHT.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(50);
+    }
+
+    @Test
+    void Yacht_카테고리는_하나라도_다르면_0점이다() {
+        //given
+        Dices dices = new Dices(List.of(
+                new Dice(6), new Dice(6), new Dice(6),
+                new Dice(6), new Dice(5)
+        ));
+
+        //when
+        int score = Category.YACHT.calculateScore(dices);
+
+        //then
+        assertThat(score).isEqualTo(0);
+    }
 }
