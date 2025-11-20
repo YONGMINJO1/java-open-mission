@@ -50,11 +50,12 @@ public class YachtGameController {
     }
 
     private boolean askReroll() {
-        try {
-            return InputView.readRerollChoice();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return false;
+        while (true) {
+            try {
+                return InputView.readRerollChoice();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
