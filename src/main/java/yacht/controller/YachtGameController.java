@@ -42,8 +42,10 @@ public class YachtGameController {
             if (!askReroll()) {
                 break;
             }
-            performReroll(dices);
-            rerollCount++;
+            boolean success = performReroll(dices);
+            if (success) {
+                rerollCount++;
+            }
         }
     }
 
@@ -56,15 +58,18 @@ public class YachtGameController {
         }
     }
 
-    private void performReroll(Dices dices) {
-        try {
-            List<Integer> selection = InputView.readDiceSelection();
-            dices.rerollSelected(selection);
-            System.out.println();
-            System.out.println("주사위를 다시 굴립니다.");
-            OutputView.printDices(dices.getValues());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+    private boolean performReroll(Dices dices) {
+        while (true) {
+            try {
+                List<Integer> selection = InputView.readDiceSelection();
+                dices.rerollSelected(selection);
+                System.out.println();
+                System.out.println("주사위를 다시 굴립니다.");
+                OutputView.printDices(dices.getValues());
+                return true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
