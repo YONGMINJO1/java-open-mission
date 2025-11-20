@@ -9,6 +9,15 @@ public class OutputView {
         System.out.println("게임을 시작합니다.");
     }
 
+    public static void printRerollCancel() {
+        System.out.println("재굴림을 취소합니다.");
+    }
+
+    public static void printRerollStart() {
+        System.out.println();
+        System.out.println("주사위를 다시 굴립니다.");
+    }
+
     public static void printDices(List<Integer> values) {
         System.out.println();
         System.out.println("주사위를 굴립니다.");

@@ -65,12 +65,11 @@ public class YachtGameController {
                 List<Integer> selection = InputView.readDiceSelection();
 
                 if (selection.isEmpty()) {
-                    System.out.println("재굴림을 취소합니다.");
+                    OutputView.printRerollCancel();
                     return false;
                 }
                 dices.rerollSelected(selection);
-                System.out.println();
-                System.out.println("주사위를 다시 굴립니다.");
+                OutputView.printRerollStart();
                 OutputView.printDices(dices.getValues());
                 return true;
             } catch (IllegalArgumentException e) {
