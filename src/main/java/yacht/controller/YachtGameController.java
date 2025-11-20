@@ -42,8 +42,8 @@ public class YachtGameController {
             if (!askReroll()) {
                 break;
             }
-            boolean success = performReroll(dices);
-            if (success) {
+            boolean executed = performReroll(dices);
+            if (executed) {
                 rerollCount++;
             }
         }
@@ -63,6 +63,11 @@ public class YachtGameController {
         while (true) {
             try {
                 List<Integer> selection = InputView.readDiceSelection();
+
+                if (selection.isEmpty()) {
+                    System.out.println("재굴림을 취소합니다.");
+                    return false;
+                }
                 dices.rerollSelected(selection);
                 System.out.println();
                 System.out.println("주사위를 다시 굴립니다.");

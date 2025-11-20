@@ -34,9 +34,13 @@ public class InputView {
 
     public static List<Integer> readDiceSelection() {
         System.out.println();
-        System.out.print("다시 굴릴 주사위를 선택하세요 (예: 1,3,5): ");
+        System.out.print("다시 굴릴 주사위를 선택하세요 (예: 1,3,5 또는 취소: 0): ");
         String input = Console.readLine();
         validateNotEmpty(input);
+
+        if (input.trim().equals("0")) {
+            return new ArrayList<>();
+        }
         return parseDiceSelection(input);
     }
 
