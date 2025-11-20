@@ -18,7 +18,7 @@ public class OutputView {
             if (i > 0) {
                 result.append(", ");
             }
-            result.append((i + 1) + "번 주사위 : " + values.get(i));
+            result.append("🎲" + (i + 1) + "번 주사위 : " + values.get(i));
         }
         result.append("]");
         System.out.println(result.toString());
