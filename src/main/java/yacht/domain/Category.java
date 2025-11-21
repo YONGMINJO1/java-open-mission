@@ -24,39 +24,67 @@ public enum Category {
 
     public int calculateScore(Dices dices) {
         if (this == CHOICE) {
-            return dices.sumAll();
+            return calculateChoice(dices);
         }
         if (this == FOUR_OF_A_KIND) {
-            int value = dices.getFourOfAKindValue();
-            if (value == 0) {
-                return 0;
-            }
-            return dices.sumAll();
+            return calculateFourOfAKind(dices);
         }
         if (this == FULL_HOUSE) {
-            if (dices.isFullHouse()) {
-                return dices.sumAll();
-            }
-            return 0;
+            return calculateFullHouse(dices);
         }
         if (this == SMALL_STRAIGHT) {
-            if (dices.isSmallStraight()) {
-                return 15;
-            }
-            return 0;
+            return calculateSmallStraight(dices);
         }
         if (this == LARGE_STRAIGHT) {
-            if (dices.isLargeStraight()) {
-                return 30;
-            }
-            return 0;
+            return calculateLargeStraight(dices);
         }
         if (this == YACHT) {
-            if (dices.isYacht()) {
-                return 50;
-            }
+            return calculateYacht(dices);
+        }
+        return calculateNumberCategory(dices);
+    }
+
+    private int calculateChoice(Dices dices) {
+        return dices.sumAll();
+    }
+
+    private int calculateFourOfAKind(Dices dices) {
+        int value = dices.getFourOfAKindValue();
+        if (value == 0) {
             return 0;
         }
+        return dices.sumAll();
+    }
+
+    private int calculateFullHouse(Dices dices) {
+        if (dices.isFullHouse()) {
+            return dices.sumAll();
+        }
+        return 0;
+    }
+
+    private int calculateSmallStraight(Dices dices) {
+        if (dices.isSmallStraight()) {
+            return 15;
+        }
+        return 0;
+    }
+
+    private int calculateLargeStraight(Dices dices) {
+        if (dices.isLargeStraight()) {
+            return 30;
+        }
+        return 0;
+    }
+
+    private int calculateYacht(Dices dices) {
+        if (dices.isYacht()) {
+            return 50;
+        }
+        return 0;
+    }
+
+    private int calculateNumberCategory(Dices dices) {
         return dices.countValue(targetNumber) * targetNumber;
     }
 
