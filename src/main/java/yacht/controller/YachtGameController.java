@@ -32,6 +32,10 @@ public class YachtGameController {
         Dices dices = throwDiceAndShow();
         selectedDiceReroll(dices);
         Category category = selectCategory();
+        if (category == null) {
+            OutputView.printGameQuit();
+            return;
+        }
         recordScore(category, dices);
     }
 
@@ -97,6 +101,10 @@ public class YachtGameController {
         while (true) {
             try {
                 int number = InputView.readCategoryNumber();
+
+                if (number == 0) {
+                    return null;
+                }
                 validateCategoryNumber(number, availableCategories.size());
                 return availableCategories.get(number - 1);
             } catch (IllegalArgumentException e) {

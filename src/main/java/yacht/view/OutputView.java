@@ -9,6 +9,11 @@ public class OutputView {
         System.out.println("게임을 시작합니다.");
     }
 
+    public static void printGameQuit() {
+        System.out.println();
+        System.out.println("게임을 중단합니다.");
+    }
+
     public static void printRerollCancel() {
         System.out.println("재굴림을 취소합니다.");
     }

@@ -16,7 +16,7 @@ public class InputView {
 
     public static int readCategoryNumber() {
         System.out.println();
-        System.out.print("선택할 카테고리 번호를 입력하세요: ");
+        System.out.print("선택할 카테고리 번호를 입력하세요 (게임 종료: 0 ): ");
         String input = Console.readLine();
         validateNumberFormat(input);
         return Integer.parseInt(input);
