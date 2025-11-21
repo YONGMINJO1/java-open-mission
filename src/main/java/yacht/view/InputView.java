@@ -1,7 +1,6 @@
 package yacht.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import com.sun.source.tree.UsesTree;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
