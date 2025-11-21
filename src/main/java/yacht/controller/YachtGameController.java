@@ -19,24 +19,31 @@ public class YachtGameController {
     public void run() {
         OutputView.printGameStart();
         playAllRounds();
-        finishGame();
+        if (scoreBoard.isGameOver()) {
+            finishGame();
+        }
     }
 
     private void playAllRounds() {
         while (!scoreBoard.isGameOver()) {
-            playRound();
+            boolean shouldContinue = playRound();
+
+            if (!shouldContinue) {
+                break;
+            }
         }
     }
 
-    private void playRound() {
+    private boolean playRound() {
         Dices dices = throwDiceAndShow();
         selectedDiceReroll(dices);
         Category category = selectCategory();
         if (category == null) {
             OutputView.printGameQuit();
-            return;
+            return false;
         }
         recordScore(category, dices);
+        return true;
     }
 
     private void selectedDiceReroll(Dices dices) {
